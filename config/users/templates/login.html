@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %} Login {% endblock %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br><br>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
-
-    <button type="submit">Login</button> <span> No Account? <a href="{% url 'users:register' %}">Register Now</a> </span>
-</form>
+<div class="row">
+    <div class="col-3 ms-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form |crispy}}
+            <button class="btn btn-primary" type="submit">Login</button> <span> No Account? <a href="{% url 'users:register' %}">Register Now</a> </span>
+        </form>
+    </div>
+    <div class="col-8">
+        <center>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/011/432/528/small_2x/enter-login-and-password-registration-page-on-screen-sign-in-to-your-account-creative-metaphor-login-page-mobile-app-with-user-page-flat-illustration-vector.jpg" alt="'bu login image">
+        </center>
+    </div>
+</div>
 
 {% if messages %}
     {% for message in messages %}

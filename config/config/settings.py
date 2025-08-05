@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-from django.conf.global_settings import MEDIA_URL, MEDIA_ROOT, AUTH_USER_MODEL
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,14 +31,18 @@ DJANGO_APPS = [
 
 CUSTOM_APPS = [
     'books',
-    'users'
+    'users',
 ]
 
 ADD_APPS = [
-
+    'crispy_forms',
+    "crispy_bootstrap5",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + ADD_APPS
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,6 +122,7 @@ AUTH_USER_MODEL = "users.CustomUser"
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static/']
 LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'

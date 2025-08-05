@@ -2,6 +2,11 @@
 from .models import CustomUser
 from django import forms
 
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'password']
+
 
 class UserCreateForm(forms.Form):
     class Meta:
