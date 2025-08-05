@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Books {% endblock %}
+
+{% block content %}
+
+<body>
+{% for book in books %}
+   <a href="{% url 'books_detail' book.id %}"><h3>{{ book.title }}</h3></a>
+{% endfor %}
+<a href="{% url 'home' %}">ortga</a>
+</body>
+{% endblock content %}

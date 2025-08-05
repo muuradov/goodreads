@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+{% if user.profile.image %}
+    <img src="{{ user.profile.image.url }}" alt="Profile rasm" style="width: 150px; height: 150px; border-radius: 50%;">
+{% else %}
+    <img src="{% static 'images/default.jpg' %}" alt="Default profile rasm" style="width: 150px; height: 150px; border-radius: 50%;">
+{% endif %}
+
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Ism:</strong> {{ user.first_name }}</p>
+<p><strong>Familiya:</strong> {{ user.last_name }}</p>
+
+<a href="{% url 'users:logout' %}">Logout</a>
+{% endblock content %}

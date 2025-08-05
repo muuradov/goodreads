@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ book.title }} {% endblock %}
+
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-2">
+            <img src="{{ book.cover_image.url }}" style="max-width: 200px; height: auto;">
+        </div>
+        <div class="col-6">
+            <h1>{{ book.title }}</h1>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>{{ book.title }}</title>
+            </head>
+            <body>
+
+
+
+
+                <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                <p><strong>Description:</strong> {{ book.description }}</p>
+        </div>
+
+    </div>
+
+
+{% endblock %}
