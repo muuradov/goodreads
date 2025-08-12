@@ -14,7 +14,6 @@ class UserCreateForm(forms.Form):
         fields = ('username', 'email', 'first_name', 'last_name', 'gender', 'password')
 
 
-
     def save(self, commit=True):
         user = super().save(commit)
         user.set.password(self.cleaned_data['password'])
@@ -28,5 +27,15 @@ class UserCreateForm(forms.Form):
 
         return user
 
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'first_name', 'last_name', 'gender', 'profile_picture')
+
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        return user
 
 

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserCreateForm, LoginForm
+from .forms import UserCreateForm, LoginForm, UserEditForm
 
 
 class RegisterView(View):
@@ -77,3 +77,28 @@ class Logout_view(View):
         logout(request)
 
         return redirect("home")
+
+
+class ProfileEditView(View):
+
+    def get(self, request):
+        user = request.user
+        form = UserEditForm(instance=user)
+
+        context = {
+            'form': form
+
+        }
+        return render(request, 'edit_profile.html', context)
+
+    def post(self, request):
+        form = UserEditForm(request.POST, instance=request.user, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('users:profile')
+
+        context = {
+            'form': form
+
+        }
+        return render(request, 'edit_profile.html', context)
